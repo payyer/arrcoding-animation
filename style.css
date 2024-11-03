@@ -1,0 +1,77 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvb;
+  background-color: #FFD465;
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+}
+
+.c-according {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-radius: 16px;
+  background-color: white;
+  width: 460px;
+  min-height: 380px;
+  padding: 80px;
+}
+
+.according__item {
+  padding-bottom: 16px;
+}
+.according__item:last-of-type {
+  padding-bottom: 0;
+}
+
+.according__header {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  font-weight: 700;
+  font-size: 2.4rem;
+  padding-bottom: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.according__arrow {
+  transition: rotate 0.3s ease-in-out;
+}
+/* Thẻ details sẽ có thuộc tính open. Nếu open thì sẽ xoay icon  */
+.according[open] .according__arrow {
+  rotate: 90deg;
+}
+
+/* Sửa dụng grid template-rows: 0fr + overflow: hidden cho class according__content để ẩn content,
+  Dùng grid-template-rows để dễ animation với transition
+*/
+.according__warpper-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Khi details open thì cho grid-template-rows: 1fr thì content sẽ hiện ra */
+.according[open] + .according__warpper-content  {
+  grid-template-rows: 1fr;
+}
+.according__content {
+  overflow: hidden;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-bottom: 2px solid #13151A;
+  transition: padding-bottom 0.3s ease-in-out;
+}
+.according[open] + .according__warpper-content .according__content {
+  padding-bottom: 15px;
+}
